@@ -214,7 +214,6 @@ namespace Microsoft.Teams.AI.AI.Models
 
             ChatCompletionOptions chatCompletionOptions = new()
             {
-                MaxOutputTokenCount = completion.MaxTokens,
                 Temperature = (float)completion.Temperature,
                 TopP = (float)completion.TopP,
                 PresencePenalty = (float)completion.PresencePenalty,
@@ -223,6 +222,7 @@ namespace Microsoft.Teams.AI.AI.Models
 
             if (isO1Model)
             {
+                chatCompletionOptions.MaxOutputTokenCount = completion.MaxTokens;
                 chatCompletionOptions.Temperature = 1;
                 chatCompletionOptions.TopP = 1;
                 chatCompletionOptions.PresencePenalty = 0;

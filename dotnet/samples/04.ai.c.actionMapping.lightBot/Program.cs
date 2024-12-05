@@ -37,7 +37,8 @@ if (!string.IsNullOrEmpty(config.OpenAI?.ApiKey))
     builder.Services.AddSingleton<OpenAIModel>(sp => new(
         new OpenAIModelOptions(config.OpenAI.ApiKey, "gpt-4o")
         {
-            LogRequests = true
+            LogRequests = true,
+            Stream = true
         },
         sp.GetService<ILoggerFactory>()
     ));
